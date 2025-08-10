@@ -32,5 +32,3 @@ def get_sitename(excel_name:str)->list[dict]:
     sitenames = list(set(sitenames))
 
     return(sitenames)
-
-

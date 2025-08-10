@@ -1,4 +1,4 @@
-import widget
+from tools import widget
 
 def main():
     while(True):

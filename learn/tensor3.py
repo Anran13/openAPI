@@ -10,6 +10,9 @@ def load_and_get_tflite_model(model_path):
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
 
+    # inner function: closure
+    # the memory will not be killed
+    # the model is constructed at the first call
     def predict(x):
         interpreter.set_tensor(input_details[0]['index'], np.array([[x]], dtype=np.float32).reshape(input_details[0]['shape']))
         interpreter.invoke()
@@ -19,7 +22,6 @@ def load_and_get_tflite_model(model_path):
 
 
 st.set_page_config(layout="centered")
-
 st.title("TensorFlow Lite Demo")
 
 prompt = st.chat_input("Please input x value:")
